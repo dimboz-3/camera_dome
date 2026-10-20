@@ -1,0 +1,12 @@
+pixi run python -m ocp_viewer
+
+#изменить настройки цветового отображения в vscode:
+settings->workbench.colorCustomizations
+
+"workbench.colorCustomizations": {
+  "gitDecoration.modifiedResourceForeground": "#e2c08d",
+  "gitDecoration.deletedResourceForeground": "#c74e39",
+  "gitDecoration.addedResourceForeground": "#81b88b",
+  "gitDecoration.stageModifiedResourceForeground": "#e2c08d",
+  "gitDecoration.stageDeletedResourceForeground": "#c74e39"
+}

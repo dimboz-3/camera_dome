@@ -1,0 +1,22 @@
+[workspace]
+authors = ["d.frolov <dimboz33@gmail.com>"]
+channels = ["conda-forge"]
+name = "camera_dome"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+tk = { version = "8.6.*", build = "xft_*" }
+opencv = ">=5.0.0,<6"
+
+[pypi-dependencies]
+build123d = ">=0.13.0, <0.14"
+mitsuba = ">=3.9.1, <4"
+ocp-vscode = ">=4.2.0, <5"
+numpy = ">=2.5.4, <3"
+scipy = ">=1.18.1, <2"
+pillow = ">=13.0.0, <14"
+ocp-viewer = ">=1.2.0, <2"

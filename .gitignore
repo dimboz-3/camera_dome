@@ -1,0 +1,27 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+.aider*
+*.log
+cline-sdk*
+cline.vsix
+Cline/
+archive/
+.lesshst
+.viminfo
+.bash_history
+.streamlit/
+.copilot/
+.extensions/
+.vscode/
+.vscode-shared/
+.config/
+.cache/
+.local/
+.pipx/
+.pixi/
+my_dns.conf
+.inputrc
+.resolv.conf
+__pycache__/
+*.pyc
