@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "units": {
+    "length": "m",
+    "angle": "deg"
+  },
+  "conventions": {
+    "handedness": "right",
+    "vectors": "column",
+    "local_matrix": "T @ Rz @ Ry @ Rx",
+    "world_matrix": "parent @ local",
+    "camera_forward": "+X",
+    "camera_up": "+Z",
+    "board_plane": "XY",
+    "board_normal": "+Z",
+    "board_origin": "center",
+    "board_white_cell": "(row + column) % 2 == 0"
+  },
+  "description": "Сцена из board_27_19.scad. Локальная оптическая ось камеры +X, вертикаль +Z. R=Rz@Ry@Rx; M=parent@T@R.",
+  "parameters": {
+    "pitch_deg": 45.0,
+    "yaw_deg": 0.0,
+    "roll_deg": 0.0,
+    "board_distance_m": 2.0,
+    "thickness_m": 0.05,
+    "ior": 1.52
+  },
+  "parameterization": {
+    "shell_id": "shell",
+    "camera_id": "camera",
+    "board_reference_id": "board_reference",
+    "board_id": "board",
+    "camera_clearance_m": 0.05,
+    "camera_aim": "fixed_world",
+    "description": "Опорная камера сохраняет зазор до внутренней стенки. Шаблон расположен по её локальной оси +X. Реальная камера получает локальный перенос и поворот camera_offset; шаблон и опорная камера от люфта не зависят.",
+    "camera_offset": {
+      "translation_m": [
+        0,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "camera_reference_id": "camera_reference"
+  },
+  "materials": {
+    "glass": {
+      "type": "dielectric",
+      "ior": 1.52,
+      "outside_ior": 1.0
+    },
+    "board_surface": {
+      "type": "checkerboard",
+      "white": 0.9,
+      "black": 0.02
+    }
+  },
+  "graph": {
+    "id": "scene",
+    "type": "group",
+    "transform": {
+      "translation_m": [
+        0,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "children": [
+      {
+        "id": "rig",
+        "type": "group",
+        "transform": {
+          "translation_m": [
+            0,
+            0,
+            0
+          ],
+          "rotation_deg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "children": [
+          {
+            "id": "shell",
+            "type": "spherical_shell",
+            "material": "glass",
+            "transform": {
+              "translation_m": [
+                0,
+                0,
+                0
+              ],
+              "rotation_deg": [
+                0,
+                0,
+                0
+              ]
+            },
+            "geometry": {
+              "outer_radius_m": 6.0,
+              "thickness_m": 0.05
+            }
+          },
+          {
+            "id": "board_reference",
+            "type": "group",
+            "transform": {
+              "translation_m": [
+                4.171930009000631,
+                0.0,
+                4.17193000900063
+              ],
+              "rotation_deg": [
+                0.0,
+                0,
+                0.0
+              ]
+            },
+            "children": [
+              {
+                "id": "board",
+                "type": "checkerboard",
+                "material": "board_surface",
+                "transform": {
+                  "translation_m": [
+                    2.0,
+                    0,
+                    0
+                  ],
+                  "rotation_deg": [
+                    90,
+                    0,
+                    90
+                  ]
+                },
+                "geometry": {
+                  "columns": 27,
+                  "rows": 19,
+                  "cell_size_m": 0.042
+                }
+              }
+            ]
+          },
+          {
+            "id": "camera",
+            "type": "camera",
+            "transform": {
+              "translation_m": [
+                4.171930009000631,
+                0.0,
+                4.17193000900063
+              ],
+              "rotation_deg": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "sensor": {
+              "resolution": [
+                1920,
+                1536
+              ],
+              "focus_px": 1200.0,
+              "near_clip_m": 1e-05,
+              "far_clip_m": 10000.0
+            }
+          },
+          {
+            "id": "camera_reference",
+            "type": "group",
+            "transform": {
+              "translation_m": [
+                4.171930009000631,
+                0.0,
+                4.17193000900063
+              ],
+              "rotation_deg": [
+                0.0,
+                0,
+                0.0
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "render": {
+    "samples": 64,
+    "seed": 0,
+    "max_depth": 12,
+    "environment_radiance": 1.5,
+    "resolution_scale": 0.3333333333333333,
+    "variant": "scalar_rgb",
+    "lighting_mode": "studio",
+    "background_radiance": 0.0,
+    "key_light_radiance": 12.0
+  },
+  "preview": {
+    "shell_mode": "section",
+    "section_radius_m": 1.2,
+    "marker_radius_m": 0.01,
+    "frustum_depth_m": 1.0
+  },
+  "resolved": true
+}
